@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>why React</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="root">not rendered</div>
+    <!-- loading react from cdn -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <!-- it handles rendering to the dom form react  -->
+    <script>
+    // Your code is going to go here
+    </script>
+
+    <script>
+        // this is like a rubber stamp , we can resue this component to create different more elements
+        const App = () => {
+            // this function has to be fast as it has to render 
+            return React.createElement(
+                "div",
+                // {},this is id
+                {},
+                React.createElement("h1",{ id : "brand"},"adopt me")
+            );
+        };
+
+        // here it's creating instance of app and putting it in root , it renders and append it to dom of browser 
+        // as browser cannot render react
+        // this is pure react 
+        ReactDom.renders(React.createElement(App),document.getElementById("root"));
+    </script>
+</body>
+
+</body>
+</html>
