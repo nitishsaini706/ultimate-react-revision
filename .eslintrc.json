@@ -1,0 +1,24 @@
+//it only use eslint and prettier and order is first eslint and then prettier 
+// iske baad kuch checker check nhi karega
+// makes our app fast
+
+//eslint is static code anaylsis tool 
+{
+    "extends" : [
+        "eslint:recommended",
+        "prettier"
+    ],
+    "plugins":[],
+    "parserOptions":{
+        "ecmaVersion":2022,
+        "sourceType":"module",
+        "ecmaFeature":{
+            "jsx":true
+        }
+    },
+    "env":{
+        "es6":true,
+        "browser":true,
+        "node":true
+    }
+}
