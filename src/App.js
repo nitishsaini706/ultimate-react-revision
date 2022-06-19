@@ -19,9 +19,12 @@ const App = () => {
         <BrowserRouter>
             <h1>Adopt me</h1>
             <Routes>
-                <Route path='/details/id' element={<Details/>}/>
+                <Route path='/details/:id' element={<Details/>}/>
+                {/* we need to create a component which will return details with a tag with href as /details/id */}
                 <Route path='/' element={<Form/>} />
             </Routes>
+
+            {/* we use <Link> component instead of returning <a> tag  */}
         </BrowserRouter>
     );
 };
