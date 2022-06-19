@@ -3,7 +3,7 @@ import React from 'react';
 // this will increae speed as we're not import whole module but just the function we require
 import { render } from 'react-dom';
 import Pet from "./Pet";
-import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import { BrowserRouter,Routes,Route,Link} from 'react-router-dom';
 import Form from "./Form.js";
 import Details from "./Details"
 
@@ -17,7 +17,8 @@ const App = () => {
         // </div>
 
         <BrowserRouter>
-            <h1>Adopt me</h1>
+        {/* example of Link */}
+            <Link to="/">Adopt me</Link>
             <Routes>
                 <Route path='/details/:id' element={<Details/>}/>
                 {/* we need to create a component which will return details with a tag with href as /details/id */}
