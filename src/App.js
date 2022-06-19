@@ -3,12 +3,15 @@ import React from 'react';
 // this will increae speed as we're not import whole module but just the function we require
 import { render } from 'react-dom';
 import Pet from "./Pet";
+import Form from "./Form.js";
 
 
 const App = () => {
     return(
         <div> 
-            <Pet name="nitish"/>
+            {/* <Pet name="nitish"/> */}
+
+            <Form/>
         </div>
     );
 };
