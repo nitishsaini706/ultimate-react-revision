@@ -51,4 +51,14 @@ class Details extends Component {
     }
 }
 
-export default Details;
+// this is how we use params from url 
+
+// we need to wrap it into new componenet 
+
+const WrappedDetails = () => {
+    const params = useParams();
+    return <Details params={params}/>
+
+}
+
+export default WrappedDetails;
