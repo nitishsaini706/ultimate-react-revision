@@ -12,6 +12,12 @@ class Carasoul extends Component{
         images: ["http://pets-images.dev-apis.com/pets/none.jpg"],
     };
 
+    // we need to handle click event in carousel 
+    handleIndex = (event) =>{
+        this.setState({
+            active : Integer.parse(event.target.dataset.index),
+        });
+    };
     render() {
         const {active} = this.state;
         const {images} = this.props;
@@ -24,6 +30,7 @@ class Carasoul extends Component{
                         <img 
                             key={photo}
                             src={photo}
+                            onClick= {this.handleIndex}
                             className={index === active ? "active" : ""}
                         />
                     })}

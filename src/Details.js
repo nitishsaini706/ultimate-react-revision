@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { Component } from "react";
 import Carasoul from "./Carosoul";
+import ErrorBoundary from "./ErrorBoundary"
 
 // const Details = () =>{
     // it's extracting id from parameters , just like in express
@@ -59,8 +60,11 @@ class Details extends Component {
 
 const WrappedDetails = () => {
     const params = useParams();
-    return <Details params={params}/>
+   return( <ErrorBoundary>
 
+        <Details params={params}/>
+    </ErrorBoundary>
+   );
 }
 
 export default WrappedDetails;
