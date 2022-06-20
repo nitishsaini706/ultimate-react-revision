@@ -9,5 +9,32 @@ import { Component } from "react";
 
 // example of class component 
 
+class Details extends Component {
+
+    constructor(props)
+    {
+        super(props);
+        this.state = {loading : true}
+    }
+
+    render()
+    {
+        if(this.state.loading)
+        {
+            return <h1>Loading ..</h1>
+        }
+
+        // destructuring else we've to wriite this.state.name
+
+        const {animal,breed,name} = this.state;
+
+        return (
+            <div>
+                <h1>{name}</h1>
+                <h2>{animal} - {breed}</h2>
+            </div>
+        )
+    }
+}
 
 export default Details;
