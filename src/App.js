@@ -6,27 +6,32 @@ import Pet from "./Pet";
 import { BrowserRouter,Routes,Route,Link} from 'react-router-dom';
 import Form from "./Form.js";
 import Details from "./Details"
+import Themecontext from './Themecontext';
 
 
 const App = () => {
+
+    const theme = useState('black');
     return(
         // <div> 
         //     {/* <Pet name="nitish"/> */}
 
         //     <Form/>
         // </div>
+        <Themecontext.Provider value={theme}>
+            {/* // we can add as many theme for different components just need to create new theme2 with themer i want */}
+            <BrowserRouter>
+            {/* example of Link */}
+                <Link to="/">Adopt me</Link>
+                <Routes>
+                    <Route path='/details/:id' element={<Details/>}/>
+                    {/* we need to create a component which will return details with a tag with href as /details/id */}
+                    <Route path='/' element={<Form/>} />
+                </Routes>
 
-        <BrowserRouter>
-        {/* example of Link */}
-            <Link to="/">Adopt me</Link>
-            <Routes>
-                <Route path='/details/:id' element={<Details/>}/>
-                {/* we need to create a component which will return details with a tag with href as /details/id */}
-                <Route path='/' element={<Form/>} />
-            </Routes>
-
-            {/* we use <Link> component instead of returning <a> tag  */}
-        </BrowserRouter>
+                {/* we use <Link> component instead of returning <a> tag  */}
+            </BrowserRouter>
+        </Themecontext.Provider>
     );
 };
 // const App = () => {
