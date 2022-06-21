@@ -24,5 +24,10 @@ const Modal = ({children}) => {
 
         // this is cleanup
         return () => modal.removeChild(elementRef.current);
-    },[])
-}
+    },[]);
+    
+                        // call this element , put in this element
+    return createPortal(<div>{children}</div> , elementRef.current);
+};
+
+export default Modal;

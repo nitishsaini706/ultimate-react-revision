@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { Component } from "react";
 import Carasoul from "./Carosoul";
 import ErrorBoundary from "./ErrorBoundary"
+import Modal from "./Modal";
+import Themecontext from "./Themecontext";
 
 // const Details = () =>{
     // it's extracting id from parameters , just like in express
@@ -16,7 +18,7 @@ class Details extends Component {
     constructor(props)
     {
         super(props);
-        this.state = {loading : true}
+        this.state = {loading : true , showModal:false}
     }
 
     async componentDidMount()
@@ -32,6 +34,10 @@ class Details extends Component {
         this.setState({
             loading:false
         })
+
+
+        // this will toggle modal if it's true then false and vice versa
+        toggleModal = () => ({ showModal : !this.state.showModal});
     }
     render()
     {
@@ -42,13 +48,35 @@ class Details extends Component {
 
         // destructuring else we've to wriite this.state.name
 
-        const {animal,breed,name,images} = this.state;
+        const {animal,breed,name,images,showModal} = this.state;
 
         return (
             <div>
                 <Carasoul images={images} />
                 <h1>{name}</h1>
                 <h2>{animal} - {breed}</h2>
+
+                <Themecontext.Consumer>
+                {
+                    ([theme]) => {
+
+                        <button onClick={this.showModal} style={{backgroundColor:theme}}></button>
+                    }
+                }
+                </Themecontext.Consumer>
+
+                {
+                    showModal ? (
+                        <Modal>
+                            <div>
+                                <h1>
+                                    adop me
+                                </h1>
+                                <button onClick={this.toggleModal}>No</button>
+                            </div>
+                        </Modal>
+                    ) : null
+                }
             </div>
         );
     }
