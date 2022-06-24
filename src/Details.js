@@ -60,7 +60,7 @@ class Details extends Component {
                 {
                     ([theme]) => {
 
-                        <button onClick={this.showModal} style={{backgroundColor:theme}}></button>
+                        <button onClick={this.toggleModal} style={{backgroundColor:theme}}></button>
                     }
                 }
                 </Themecontext.Consumer>
