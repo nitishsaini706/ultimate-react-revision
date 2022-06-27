@@ -28,13 +28,13 @@ const SearchParams = () => {
 
   return (
     <div className="my-0 mx-auto w-11/12">
-      <form className="p-10 mb-10 rounded-lg bg-gray-200 shadow-lg flex-col justify-center item-center"
+      <form className="p-10 mb-10 rounded-lg bg-gray-200 shadow-lg flex flex-col justify-center item-cener"
         onSubmit={(e) => {
           e.preventDefault();
           requestPets();
         }}
       >
-        <label htmlFor="location">
+        <label htmlFor="location" className="block">
           Location
           <input
             id="location"
@@ -43,7 +43,7 @@ const SearchParams = () => {
             onChange={(e) => updateLocation(e.target.value)}
           />
         </label>
-        <label htmlFor="animal">
+        <label htmlFor="animal" className="relative">
           Animal
           <select
             id="animal"
@@ -65,7 +65,7 @@ const SearchParams = () => {
             ))}
           </select>
         </label>
-        <label htmlFor="breed">
+        <label htmlFor="breed" className="relative">
           Breed
           <select
             disabled={!breeds.length}
@@ -82,7 +82,7 @@ const SearchParams = () => {
             ))}
           </select>
         </label>
-        <label htmlFor="theme">
+        <label htmlFor="theme" className="relative">
           Theme
           <select
             value={theme}
