@@ -20,7 +20,7 @@ const App = () => {
     <StrictMode>
       <Suspense fallback={<h1>loading route …</h1>}>
       <ThemeContext.Provider value={theme}>
-        <BrowserRouter>
+        
           <header className=" mb-10">
             <Link to="/" className="text-6xl text-white hover:text-gray-200">Adopt Me!</Link>
           </header>
@@ -28,11 +28,11 @@ const App = () => {
             <Route path="/details/:id" element={<Details />} />
             <Route path="/" element={<SearchParams />} />
           </Routes>
-        </BrowserRouter>
+      
       </ThemeContext.Provider>
       </Suspense>
     </StrictMode>
   );
 };
 
-render(<App />, document.getElementById("root"));
+export default App;
