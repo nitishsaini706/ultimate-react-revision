@@ -1,12 +1,13 @@
 import { render } from "react-dom";
-import SearchParams from "./SearchParams";
-import { StrictMode, useState } from "react";
+import { useState, StrictMode, lazy, Suspense } from "react";
+// import SearchParams from "./SearchParams";
+// import { StrictMode, useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 // import Details from "./Details";
 import ThemeContext from "./ThemeContext";
 
 // import from React
-import { useState, StrictMode, lazy, Suspense } from "react";
+
 // delete Details & Search params imports
 
 // above const App =
