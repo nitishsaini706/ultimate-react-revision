@@ -1,5 +1,6 @@
 // mostly code from reactjs.org/docs/error-boundaries.html
-import { Component } from "react";
+import React from "react";
+import { Component, ErrorInfo } from "react";
 import { Link, Navigate } from "react-router-dom";
 
 class ErrorBoundary extends Component {
@@ -7,7 +8,7 @@ class ErrorBoundary extends Component {
   static getDerivedStateFromError() {
     return { hasError: true };
   }
-  componentDidCatch(error, info) {
+  componentDidCatch(error:Error, info:ErrorInfo):void {
     console.error("ErrorBoundary caught an error", error, info);
   }
   componentDidUpdate() {
@@ -16,6 +17,7 @@ class ErrorBoundary extends Component {
     }
   }
   render() {
+    
     if (this.state.redirect) {
       return <Navigate to="/" />;
     } else if (this.state.hasError) {

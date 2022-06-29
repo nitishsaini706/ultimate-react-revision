@@ -26,6 +26,10 @@ class Details extends Component<Props> {
   };
 
   async componentDidMount() {
+    if(!this.props.params.id)
+    {
+      return;
+    }
     const res = await fetch(
       `http://pets-v2.dev-apis.com/pets?id=${this.props.params.id}`
     );
