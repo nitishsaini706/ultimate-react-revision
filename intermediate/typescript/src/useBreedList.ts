@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
+import {Animal ,breedListApi} from "./APIResponsetypes";
 
-const localCache = {};
+const localCache:{
+  [index:string] : string[];
+} = {};
 
-export default function useBreedList(animal) {
-  const [breedList, setBreedList] = useState([]);
-  const [status, setStatus] = useState("unloaded");
+type status = "unloaded" | "loading" | "loaded" 
+
+export default function useBreedList(animal:Animal) {
+  const [breedList, setBreedList] = useState([] as string[] );
+  const [status, setStatus] = useState("unloaded"  as string);
 
   useEffect(() => {
     if (!animal) {
