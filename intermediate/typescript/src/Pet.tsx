@@ -1,11 +1,11 @@
 import React from "react";
 import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
-// import {Animal } from "./APIResponsetypes";
+import {Animal } from "./APIResponsetypes";
 
 interface Iprops {
   name:string;
-  animal:string;
+  animal:Animal;
   breed:string;
   images:string[];
   location:String;
