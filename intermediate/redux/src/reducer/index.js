@@ -1,5 +1,8 @@
 import { combineReducers } from "redux";
 import location from "./location";
+import animal from "./animal";
+import breed from "./breed";
+import theme from "./theme";
 
 
 // combine reducers is helper function which combines all reducers into one place
@@ -16,8 +19,14 @@ import location from "./location";
 
 // this is one parent reducer function
 
+// this reducer is basically doing this with multiple switch satements but we dont need to do that
+// case "CHANGE_BREED":
+//         return action.payload;
 
 export default combineReducers({
     //location : location , can also be written as
     location,
+    theme,
+    animal,
+    breed
 });
