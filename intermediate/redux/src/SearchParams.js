@@ -1,17 +1,28 @@
 import { useState, useEffect, useContext } from "react";
+import { useSelector } from "react-redux";
 import Results from "./Results";
 import useBreedList from "./useBreedList";
-import ThemeContext from "./ThemeContext";
+// import ThemeContext from "./ThemeContext";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 const SearchParams = () => {
-  const [location, updateLocation] = useState("");
-  const [animal, updateAnimal] = useState("");
-  const [breed, updateBreed] = useState("");
+  // const [location, updateLocation] = useState("");
+  // const [animal, updateAnimal] = useState("");
+  // const [breed, updateBreed] = useState("");
+
+
+  // like this redux will know which state changes and will update serach params
+  // it wont update if anything apart from these states changes
+  const animal = useSelector((state) => state.animal);
+  const theme = useSelector((state) => state.theme);
+  const breed = useSelector((breed) => breed);
+  const location = useSelector((state) => state.location);
+
   const [pets, setPets] = useState([]);
   const [breeds] = useBreedList(animal);
-  const [theme, setTheme] = useContext(ThemeContext);
+  
+  // const [theme, setTheme] = useContext(ThemeContext);
 
   useEffect(() => {
     requestPets();

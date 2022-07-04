@@ -3,13 +3,16 @@ import SearchParams from "./SearchParams";
 import { StrictMode, useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Details from "./Details";
-import ThemeContext from "./ThemeContext";
+import { Provider } from "react-redux";
+// import ThemeContext from "./ThemeContext";
+import store from './store';
 
 const App = () => {
-  const theme = useState("darkblue");
+  // const theme = useState("darkblue");
   return (
     <StrictMode>
-      <ThemeContext.Provider value={theme}>
+      {/* <ThemeContext.Provider value={theme}> */}
+      <Provider store={store}>
         <BrowserRouter>
           <header>
             <Link to="/">Adopt Me!</Link>
@@ -19,7 +22,8 @@ const App = () => {
             <Route path="/" element={<SearchParams />} />
           </Routes>
         </BrowserRouter>
-      </ThemeContext.Provider>
+        </Provider>
+      {/* </ThemeContext.Provider> */}
     </StrictMode>
   );
 };
