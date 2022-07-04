@@ -1,3 +1,8 @@
+//old state =  seattle 
+// action : {type: "Change_Location" , Payload:"Washington"}
+
+// new sate = "washington"
+
 export default function location(state = "Seattle, WA", action) {
     switch (action.type) {
       case "CHANGE_LOCATION":
