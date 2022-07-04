@@ -1,8 +1,12 @@
 import { useState, useEffect, useContext } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Results from "./Results";
 import useBreedList from "./useBreedList";
 // import ThemeContext from "./ThemeContext";
+import changeAnimal from "./actionCreators/changAnimal";
+import changeLocation from "./actionCreators/changLocation";
+import changeTheme from "./actionCreators/changTheme";
+import changeBreed from "./actionCreators/chanBreedl";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
@@ -14,10 +18,15 @@ const SearchParams = () => {
 
   // like this redux will know which state changes and will update serach params
   // it wont update if anything apart from these states changes
+
+  // this is just readiing and not updating , we need dispacther for this
   const animal = useSelector((state) => state.animal);
   const theme = useSelector((state) => state.theme);
   const breed = useSelector((breed) => breed);
   const location = useSelector((state) => state.location);
+
+  // this will update actions , this will action to redux
+  const dispatch = useDispatch();
 
   const [pets, setPets] = useState([]);
   const [breeds] = useBreedList(animal);
@@ -51,7 +60,7 @@ const SearchParams = () => {
             id="location"
             value={location}
             placeholder="Location"
-            onChange={(e) => updateLocation(e.target.value)}
+            onChange={(e) => dispatch(changeLocation(e.target.value))}
           />
         </label>
         <label htmlFor="animal">
@@ -60,12 +69,10 @@ const SearchParams = () => {
             id="animal"
             value={animal}
             onChange={(e) => {
-              updateAnimal(e.target.value);
-              updateBreed("");
+               dispatch(changeAnimal(e.target.value))
             }}
             onBlur={(e) => {
-              updateAnimal(e.target.value);
-              updateBreed("");
+               dispatch(changeAnimal(e.target.value))
             }}
           >
             <option />
@@ -82,8 +89,8 @@ const SearchParams = () => {
             disabled={!breeds.length}
             id="breed"
             value={breed}
-            onChange={(e) => updateBreed(e.target.value)}
-            onBlur={(e) => updateBreed(e.target.value)}
+            onChange={(e) => dispatch(changeBreed(e.target.value))}
+            onBlur={(e) =>dispatch(changeBreed(e.target.value))}
           >
             <option />
             {breeds.map((breed) => (
@@ -97,8 +104,8 @@ const SearchParams = () => {
           Theme
           <select
             value={theme}
-            onChange={(e) => setTheme(e.target.value)}
-            onBlur={(e) => setTheme(e.target.value)}
+            onChange={(e) => dispatch(changeTheme(e.target.value))}
+            onBlur={(e) => dispatch(changeTheme(e.target.value))}
           >
             <option value="peru">Peru</option>
             <option value="darkblue">Dark Blue</option>
